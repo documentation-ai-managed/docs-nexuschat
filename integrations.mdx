@@ -1,0 +1,180 @@
+---
+title: Integrations and Extensions
+description: Connect NexusChat with third-party tools to enhance your documentation workflow.
+---
+
+## Overview
+
+NexusChat supports seamless integrations with version control systems, external APIs, webhooks, and CI/CD pipelines. You extend your documentation workflows by syncing repositories, embedding live content, automating updates, and triggering builds. Start with GitHub for version control, then explore webhooks for real-time notifications.
+
+<Callout kind="tip">
+  Review your NexusChat dashboard at `https://dashboard.example.com` to manage active integrations.
+</Callout>
+
+## Popular Integrations
+
+Discover ready-to-use connections that supercharge your setup.
+
+<Columns cols={3}>
+  <Card title="GitHub" icon="github" href="https://github.com/marketplace">
+    Sync repositories and pull requests directly into your docs.
+  </Card>
+  <Card title="Slack" icon="message-circle" href="https://slack.com/apps">
+    Receive deployment notifications and doc updates in channels.
+  </Card>
+  <Card title="Vercel" icon="zap" href="https://vercel.com/integrations">
+    Automate deployments from documentation changes.
+  </Card>
+</Columns>
+
+## Connect to GitHub
+
+Link your GitHub repositories to automatically import changes into NexusChat docs.
+
+<Steps>
+  <Step title="Create GitHub App" icon="settings">
+    Navigate to your GitHub settings and create a new GitHub App.
+
+    Set the webhook URL to `https://api.example.com/v1/webhooks/github`.
+
+    ```javascript
+    {
+      "url": "https://api.example.com/v1/webhooks/github",
+      "content_type": "json"
+    }
+    ```
+  </Step>
+  <Step title="Configure Permissions" icon="shield">
+    Grant `repository` and `pull_requests` scopes.
+
+    <ParamField header="X-GitHub-Event" param-type="string" required="true">
+      Event type like `push` or `pull_request`.
+    </ParamField>
+  </Step>
+  <Step title="Add to NexusChat" icon="link">
+    In your dashboard, paste the App ID and secret.
+
+    Use this cURL to verify:
+
+````bash
+curl -X POST https://api.example.com/v1/integrations/github \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "app_id": "YOUR_GITHUB_APP_ID",
+    "installation_id": "YOUR_INSTALLATION_ID"
+  }'
+````
+  </Step>
+</Steps>
+
+## Set Up Webhooks
+
+Webhooks enable real-time automation. Configure them to trigger NexusChat actions on external events.
+
+<Tabs>
+  <Tab title="JavaScript/Node.js" icon="code">
+    Listen for incoming webhooks.
+
+````javascript
+const express = require('express');
+const crypto = require('crypto');
+const app = express();
+
+app.use(express.raw({type: 'application/json'}));
+
+app.post('/webhook', (req, res) => {
+  const signature = `sha256=${crypto.createHmac('sha256', `YOUR_WEBHOOK_SECRET`).update(req.body).digest('hex')}`;
+  // Verify signature from NexusChat headers
+  res.status(200).send('OK');
+});
+
+app.listen(3000);
+````
+  </Tab>
+  <Tab title="Python/Flask" icon="python">
+    Handle webhook payloads securely.
+
+````python
+from flask import Flask, request
+import hmac
+import hashlib
+
+app = Flask(__name__)
+SECRET = b'YOUR_WEBHOOK_SECRET'
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    signature = hmac.new(SECRET, request.data, hashlib.sha256).hexdigest()
+    # Compare with X-NexusChat-Signature header
+    return 'OK', 200
+````
+  </Tab>
+</Tabs>
+
+<Callout kind="alert">
+  Always validate webhook signatures using `YOUR_WEBHOOK_SECRET` to prevent unauthorized access.
+</Callout>
+
+## Embed External Content and APIs
+
+Embed live data from external sources directly into your docs.
+
+Use the NexusChat Embed API:
+
+<Request tabs="JavaScript,cURL">
+````javascript
+const embedData = await fetch('https://api.example.com/v1/embeds', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    url: 'https://your-external-api.com/data',
+    refresh: 300  // 5 minutes
+  })
+});
+````
+````bash
+curl -X POST https://api.example.com/v1/embeds \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://your-external-api.com/data",
+    "refresh": 300
+  }'
+````
+</Request>
+
+<Response tabs="200">
+````json
+{
+  "embed_id": "emb_123abc",
+  "url": "https://dashboard.example.com/embeds/emb_123abc",
+  "status": "active"
+}
+````
+</Response>
+
+## CI/CD Pipeline Integrations
+
+Integrate with CI/CD tools for automated doc deployments.
+
+| Tool     | Setup Command                          | Triggers                  |
+|----------|----------------------------------------|---------------------------|
+| GitHub Actions | `nexuschat deploy`                    | Push to main             |
+| CircleCI | `curl -X POST https://api.example.com/deploy` | Successful builds     |
+| Jenkins  | Webhook to `/v1/deploy`                | Post-build hooks         |
+
+<Expandable title="Advanced CI/CD Configuration" default-open="false">
+  Customize payloads with environment variables.
+
+  ```yaml
+  env:
+    NEXUSCHAT_API_KEY: ${{ secrets.NEXUSCHAT_KEY }}
+    NEXUSCHAT_SPACE: your-space-id
+  ```
+</Expandable>
+
+Ready to automate? Visit your [integrations dashboard](https://dashboard.example.com/integrations) to enable these now.

@@ -1,0 +1,112 @@
+---
+title: Introduction to NexusChat
+description: Discover NexusChat, a powerful documentation platform for organizing and managing your project documentation with ease.
+---
+
+## Overview
+
+NexusChat empowers you to create, organize, and manage comprehensive documentation for your projects. You get a centralized space to build interactive docs with MDX support, version control, and seamless collaboration. Start organizing your knowledge base today with intuitive tools that scale with your team.
+
+<Callout kind="info">
+  NexusChat uses the brand color `{ #3B82F6 }` for primary elements. Apply it consistently in your custom themes: `background: #{3B82F6};` or `border-color: #{3B82F6};`.
+</Callout>
+
+## Key Features
+
+NexusChat offers powerful tools to streamline your documentation workflow.
+
+<Columns cols={3}>
+  <Card title="Interactive MDX" icon="code" href="#quick-start">
+    Build rich docs with components like `<Callout>`, `<Steps>`, and `<Tabs>`. Embed code, diagrams, and media effortlessly.
+  </Card>
+  <Card title="Collaboration" icon="users" href="/quickstart">
+    Invite team members, track changes, and publish updates in real-time.
+  </Card>
+  <Card title="Version Control" icon="git-branch" href="/changelog">
+    Maintain doc history with branching and merges, just like code.
+  </Card>
+</Columns>
+
+Follow brand guidelines by using `{ #3B82F6 }` for links, buttons, and accents. Avoid variations—stick to the hex value for consistency across your docs.
+
+## Quick Start
+
+Get up and running with NexusChat in minutes.
+
+<Steps>
+  <Step title="Sign Up" icon="user-plus">
+    Visit `https://app.nexuschat.com` and create your free account.
+  </Step>
+  <Step title="Create Project" icon="plus">
+    Click **New Project** and name it, like "My App Docs".
+  </Step>
+  <Step title="Add Your First Page" icon="file-text">
+    Upload MDX files or use the editor. Here's a basic config example:
+    
+    <CodeGroup tabs="JavaScript,Python">
+      ```javascript
+      // nexuschat.config.js
+      module.exports = {
+        theme: {
+          primaryColor: '#3B82F6'
+        },
+        pages: ['./docs/**/*.mdx']
+      };
+      ```
+      ```python
+      # nexuschat.py
+      config = {
+          "theme": {
+              "primary_color": "#3B82F6"
+          },
+          "pages": ["./docs/**/*.mdx"]
+      }
+      ```
+    </CodeGroup>
+  </Step>
+  <Step title="Publish" icon="rocket">
+    Hit **Publish** to make your docs live at a custom URL.
+  </Step>
+</Steps>
+
+## Brand Guidelines
+
+Maintain NexusChat's visual identity.
+
+- **Primary Color:** `{ #3B82F6 }` (use for CTAs, headers, links)
+- **Typography:** Sans-serif fonts with bold headings
+- **Icons:** Lucide library (e.g., `code`, `users`)
+
+<Expandable title="Advanced Theming" default-open="false">
+  Customize further with CSS variables:
+  
+  ```css
+  :root {
+    --nexus-primary: #3B82F6;
+    --nexus-bg: #ffffff;
+  }
+  ```
+</Expandable>
+
+## Next Steps
+
+Dive deeper into NexusChat.
+
+<Columns cols={2}>
+  <Card title="Quickstart Guide" icon="zap" href="/quickstart">
+    Set up your first full documentation site.
+  </Card>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your docs with API keys and teams.
+  </Card>
+  <Card title="Customization" icon="settings" href="/configuration">
+    Tailor themes and layouts.
+  </Card>
+  <Card title="Changelog" icon="git-commit" href="/changelog">
+    Stay updated with new features.
+  </Card>
+</Columns>
+
+<Callout kind="tip">
+  Explore the sidebar for more sections. Need help? Check our [support docs](https://docs.nexuschat.com/help).
+</Callout>

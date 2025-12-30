@@ -1,0 +1,116 @@
+---
+title: Core Features of NexusChat
+description: Explore the main capabilities of NexusChat for efficient documentation management and collaboration.
+---
+
+## Overview
+
+NexusChat provides powerful tools for managing your documentation projects. You organize content into spaces and projects, edit with rich formatting options, collaborate seamlessly, and leverage search alongside version control. These features streamline your workflow from creation to maintenance.
+
+<Columns cols={3}>
+  <Card title="Project Organization" icon="folder" href="#organize">
+    Group documents logically into spaces and projects.
+  </Card>
+  <Card title="Rich Editing" icon="edit-3" href="#editing">
+    Use Markdown or visual editors for content creation.
+  </Card>
+  <Card title="Team Collaboration" icon="users" href="#collaboration">
+    Comment, share, and review in real-time.
+  </Card>
+</Columns>
+
+## Organize Documents into Projects and Spaces
+
+You create spaces to separate documentation by team or initiative, then nest projects within them for granular control. This structure keeps large repositories navigable.
+
+<Steps>
+  <Step title="Create a Space" icon="plus">
+    Navigate to the Spaces dashboard and click "New Space". Enter a name like "Product Docs" and select permissions.
+  </Step>
+  <Step title="Add Projects" icon="folder-plus">
+    Inside your space, create projects such as "API Reference" or "User Guides".
+  </Step>
+  <Step title="Import Documents" icon="upload">
+    Drag and drop Markdown files or connect to GitHub for automatic syncing.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Use spaces for cross-team visibility while projects handle department-specific content.
+</Callout>
+
+## Editing and Formatting Tools
+
+NexusChat supports multiple editing modes to match your preference. Switch between Markdown for precision and a WYSIWYG editor for speed.
+
+<Tabs>
+  <Tab title="Markdown Editor" icon="code">
+    Write structured content with live previews.
+
+````markdown
+# Welcome to NexusChat
+
+## Quick Start
+
+- Install via `npm install nexuschat`
+- Configure your `{API_KEY}`
+- Start collaborating!
+````
+  </Tab>
+  <Tab title="Visual Editor" icon="edit">
+    Drag-and-drop images, tables, and embeds without code.
+
+    Add headings, lists, and code blocks visually. Embed videos from YouTube or diagrams via Mermaid syntax.
+  </Tab>
+</Tabs>
+
+## Collaboration Features
+
+Enable real-time comments and sharing to gather feedback efficiently. Assign reviewers and track changes.
+
+<CodeGroup tabs="JavaScript,Python">
+```javascript
+// Share a document via API
+const response = await fetch('https://api.example.com/v1/documents/{docId}/share', {
+  method: 'POST',
+  headers: { 'Authorization': `Bearer ${YOUR_API_KEY}` },
+  body: JSON.stringify({ email: 'team@company.com', role: 'editor' })
+});
+```
+```python
+# Share a document via API
+import requests
+
+response = requests.post(
+    'https://api.example.com/v1/documents/{docId}/share',
+    headers={'Authorization': f'Bearer {YOUR_API_KEY}'},
+    json={'email': 'team@company.com', 'role': 'editor'}
+)
+```
+</CodeGroup>
+
+Share links generate preview-only or full-edit access. Comments appear inline, with `@mentions` for notifications.
+
+## Search and Version Control
+
+Full-text search indexes all content instantly. Version control tracks every edit with diffs and rollback.
+
+| Feature | Description | Benefits |
+|---------|-------------|----------|
+| Global Search | Query across spaces and projects | Find content in seconds |
+| Version History | Commit-based tracking | Revert changes safely |
+| Diff Viewer | Side-by-side comparisons | Spot modifications easily |
+
+<Expandable title="Advanced Version Control" default-open="false">
+  Integrate with Git for automated backups. Use the API to fetch history:
+
+````javascript
+const history = await fetch('https://api.example.com/v1/documents/{docId}/versions');
+````
+
+  Roll back with `POST /v1/documents/{docId}/revert?version=5`.
+</Expandable>
+
+<Callout kind="info">
+  Enable version notifications in project settings to stay updated on changes.
+</Callout>

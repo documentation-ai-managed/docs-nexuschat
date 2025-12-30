@@ -1,0 +1,133 @@
+---
+title: Getting Started with NexusChat
+description: Set up your NexusChat account and create your first documentation space in just a few minutes.
+---
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+<Callout kind="info">
+
+- A modern web browser like Chrome, Firefox, or Safari
+- An email address for account verification
+- Optional: Existing documentation files (Markdown, MDX, or plain text) to import
+
+</Callout>
+
+NexusChat works entirely in the browser—no downloads required.
+
+## Create Your NexusChat Account
+
+Sign up in under a minute.
+
+<Steps>
+  <Step title="Visit the Homepage" icon="globe">
+    Open your browser and go to [https://nexuschat.com](https://nexuschat.com).
+  </Step>
+  <Step title="Start Registration" icon="user-plus">
+    Click **Sign Up** in the top right. Enter your email, create a password, and choose a workspace name.
+  </Step>
+  <Step title="Verify Email" icon="mail">
+    Check your inbox for a verification link from NexusChat. Click it to activate your account.
+  </Step>
+  <Step title="Log In" icon="log-in">
+    Return to the site and log in with your credentials. You'll land on the dashboard.
+  </Step>
+</Steps>
+
+## Set Up Your Default Documentation Space
+
+Your default space organizes all projects.
+
+<Steps>
+  <Step title="Access Workspace Settings" icon="settings">
+    From the dashboard, click your workspace name in the top bar, then select **Settings**.
+  </Step>
+  <Step title="Configure Basics" icon="sliders">
+    Set a description, add a custom domain if needed, and enable features like real-time collaboration.
+  </Step>
+  <Step title="Save Changes" icon="check-circle">
+    Click **Save**. Your space is now ready for documents.
+  </Step>
+</Steps>
+
+## Create or Import Your First Document
+
+Choose your preferred method.
+
+<Tabs>
+  <Tab title="Create New Document" icon="plus">
+    <Steps>
+      <Step title="New Document" icon="file-plus">
+        In the sidebar, click **New Document**. Name it `My First Project Docs`.
+      </Step>
+      <Step title="Add Content" icon="edit-3">
+        Use the editor to write Markdown or MDX. Here's a starter example:
+      </Step>
+    </Steps>
+
+````mdx
+# Welcome to My Project
+
+## Quick Overview
+
+NexusChat helps you manage documentation spaces.
+
+```javascript
+// Example integration
+const nexusChat = require('nexuschat-sdk');
+await nexusChat.init({ apiKey: 'YOUR_API_KEY' });
+```
+````
+
+  </Tab>
+  <Tab title="Import Existing" icon="upload">
+    <Steps>
+      <Step title="Upload File" icon="upload-cloud">
+        Drag and drop a `.md` or `.mdx` file into the **Import** section, or click **Browse**.
+      </Step>
+      <Step title="Review and Edit" icon="eye">
+        NexusChat parses the file automatically. Edit in the live preview.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Basic Workspace Navigation
+
+Master the interface quickly.
+
+<Columns cols={3}>
+  <Card title="Sidebar" icon="menu" href="#sidebar">
+    Access spaces, documents, and settings. Search with `<kbd>Cmd</kbd>+<kbd>K</kbd>`.
+  </Card>
+  <Card title="Editor Toolbar" icon="edit-3" href="#editor">
+    Format text, insert components, and preview changes live.
+  </Card>
+  <Card title="Preview Panel" icon="eye" href="#preview">
+    Toggle between edit and read modes. Share previews instantly.
+  </Card>
+</Columns>
+
+## Next Steps
+
+<Callout kind="tip">
+
+Explore more with these guides:
+
+</Callout>
+
+<Columns cols={3}>
+  <Card title="Introduction" icon="book-open" href="/introduction">
+    Learn core concepts and features.
+  </Card>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your spaces with advanced auth.
+  </Card>
+  <Card title="Advanced Editing" icon="code" href="/features">
+    MDX components and custom layouts.
+  </Card>
+</Columns>
+
+You're now ready to build your documentation empire with NexusChat!

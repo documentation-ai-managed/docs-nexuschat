@@ -1,0 +1,138 @@
+---
+title: Changelog
+description: Track the latest updates and improvements to NexusChat.
+---
+
+## Recent Updates
+
+<Update label="2024-10-15" description="v1.3.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added real-time message editing and deletion for enhanced conversation control.
+- Introduced threaded replies to organize discussions in busy chat rooms.
+- New webhook support for custom integrations with external services.
+
+## Improvements
+
+- Optimized message delivery latency by `>30%` for smoother experiences.
+- Enhanced mobile responsiveness with better touch gesture support.
+
+## Bug Fixes
+
+- Fixed intermittent connection drops during high-traffic periods.
+- Resolved issue where unread message counts were not syncing across devices.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.2.0" tags={["bugfix", "security"]}>
+
+## Security Updates
+
+- Patched potential XSS vulnerabilities in message rendering.
+- Implemented rate limiting on API endpoints to prevent abuse.
+
+## Bug Fixes
+
+- Corrected emoji rendering issues in certain browsers.
+- Fixed notification delivery failures for push alerts.
+
+## Improvements
+
+- Upgraded underlying WebSocket connections for better reliability.
+
+</Update>
+
+<Update label="2024-08-10" description="v1.1.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Launched voice message support with end-to-end encryption.
+- Added file sharing up to `100MB` per message.
+
+## Breaking Changes
+
+- Updated authentication flow: Replace `api_key` with `access_token` in headers.
+
+<CodeGroup tabs="JavaScript,Python">
+```javascript
+// Old
+fetch('https://api.example.com/messages', {
+  headers: { 'api_key': 'YOUR_API_KEY' }
+});
+
+// New
+fetch('https://api.example.com/messages', {
+  headers: { 'Authorization': `Bearer ${YOUR_ACCESS_TOKEN}` }
+});
+```
+```python
+# Old
+headers = {'api_key': 'YOUR_API_KEY'}
+
+# New
+headers = {'Authorization': f'Bearer {YOUR_ACCESS_TOKEN}'}
+```
+</CodeGroup>
+
+## Migration Steps
+
+Follow these steps to update your integration:
+
+<Steps>
+<Step title="Update SDK" icon="download">
+
+Install the latest version:
+
+````bash
+npm install nexuschatsdk@latest
+````
+
+</Step>
+<Step title="Replace Tokens" icon="settings">
+
+Update all auth calls to use `access_token`.
+
+</Step>
+<Step title="Test Endpoints" icon="play">
+
+Verify message sending and receiving.
+
+</Step>
+</Steps>
+
+</Update>
+
+## Upcoming Roadmap
+
+Stay ahead with what's coming next to NexusChat. These features are in active development.
+
+<Columns cols={3}>
+<Card title="AI-Powered Summaries" icon="zap" href="#ai-summaries">
+Generate conversation summaries automatically.
+</Card>
+
+<Card title="Multi-Channel Integrations" icon="share-2" href="#integrations">
+Connect Slack, Discord, and more seamlessly.
+</Card>
+
+<Card title="Advanced Analytics" icon="bar-chart-3" href="#analytics">
+Track engagement metrics and user behavior.
+</Card>
+</Columns>
+
+<Callout kind="info">
+Subscribe to our newsletter or join the Discord community for beta access to upcoming releases. Check the [full roadmap](https://dashboard.example.com/roadmap) for priorities.
+</Callout>
+
+<Expandable title="Detailed Migration Guide for Breaking Changes" default-open="false">
+
+If you encounter issues after upgrading:
+
+1. Audit your codebase for deprecated `api_key` usage.
+2. Regenerate tokens via the dashboard at `https://dashboard.example.com/tokens`.
+3. Test in staging before production deployment.
+
+For v1.1.0 specifically, ensure your SDK version is `>=1.1.0`.
+
+</Expandable>
